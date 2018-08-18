@@ -1,0 +1,30 @@
+(defun appendd (L1 L2)
+	(if(null L1) L2
+		(cons (car L1) (appendd (cdr L1) L2))
+	)
+)
+(defun memberList(X L)
+( 
+	cond
+		((null L) nil)
+		((equal X (car L)) t)
+		(t (memberList X (cdr L)))
+)
+) 	
+(defun	remmDup(L)
+	(cond
+		((null L) nil)
+		((memberList (car L) (cdr L)) (remmDup (cdr L)))
+		(t (appendd (list (car L)) (remmDup (cdr L))))
+	)
+)
+(terpri)
+(write "original list")
+(terpri)
+(write '(1 2 2 4 (ad ad) (ad ad) (a) (a) a a))
+(terpri)
+(terpri)
+(write "after removing duplicates")
+(terpri)
+(write (remmDup '(1 2 2 4 (ad ad) (ad ad) (a) (a) a a)))
+
